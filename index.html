@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarika Shri 105 Sulakshya Mati Mataji</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'temple-white': '#FDFBF7',
+                        'pure-white': '#FFFFFF',
+                        'saffron': '#F39C12',
+                        'saffron-dark': '#D35400',
+                        'maroon': '#5A1815',
+                        'charcoal': '#2C2A29',
+                        'gold': '#D4AF37',
+                        'sand': '#E5E0D8',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'system-ui', 'sans-serif'],
+                        serif: ['Poppins', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Spiritual Panel Styles */
+        .spiritual-panel-dark {
+            box-shadow: 0 25px 50px rgba(90, 24, 21, 0.15);
+            border: 1px solid #D4AF37;
+            outline: 1px solid rgba(212, 175, 55, 0.4);
+            outline-offset: -6px;
+        }
+
+        .spiritual-panel-light {
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+            border: 1px solid #E5E0D8;
+            outline: 1px solid rgba(229, 224, 216, 0.6);
+            outline-offset: -6px;
+        }
+
+        /* --- Footer Custom Styles --- */
+        .sunder_sulakshya-footer {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            padding: 80px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border-top: 4px solid #D4AF37;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            fill: none;
+            stroke: #D4AF37;
+            stroke-width: 1.5;
+        }
+
+        .logo-text {
+            font-family: "Poppins", sans-serif;
+            font-size: 1.75rem;
+            line-height: 1.1;
+            text-align: left;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #FDFBF7;
+        }
+
+        .footer-description {
+            color: #E5E0D8;
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.7;
+            max-width: 600px;
+            margin-bottom: 48px;
+        }
+
+        .footer-message {
+            margin-bottom: 40px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .message-white {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+            color: #ffffff;
+        }
+
+        .message-gold {
+            font-size: 2rem;
+            font-weight: 500;
+            font-style: italic;
+            color: #F39C12;
+            letter-spacing: 0.02em;
+        }
+
+        .footer-divider {
+            width: 750px;
+            height: 1px;
+            background-color: rgba(212, 175, 55, 0.3);
+            border: none;
+            margin: 0 auto 30px;
+        }
+
+        .footer-copyright {
+            color: #E5E0D8;
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 10;
+            font-size: 16px;
+        }
+
+        /* --- Neumorphic Dark Social Buttons --- */
+        .social-links-container {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 45px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .neu-social-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background-color: #0a0a0a;
+            border: 4px solid rgba(229, 224, 216, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #E5E0D8;
+            font-size: 1.4rem;
+            box-shadow: 6px 6px 12px #000000,
+                -6px -6px 12px #181818;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .neu-social-btn:hover {
+            box-shadow: inset 5px 5px 10px #000000,
+                inset -5px -5px 10px #181818;
+            border-color: rgba(229, 224, 216, 0.3);
+        }
+
+        .neu-social-btn.whatsapp:hover {
+            color: #25D366;
+            border-color: rgba(37, 211, 102, 0.4);
+        }
+
+        .neu-social-btn.instagram:hover {
+            color: #E1306C;
+            border-color: rgba(225, 48, 108, 0.4);
+        }
+
+        .neu-social-btn.youtube:hover {
+            color: #FF0000;
+            border-color: rgba(255, 0, 0, 0.4);
+        }
+
+        .neu-social-btn.facebook:hover {
+            color: #1877F2;
+            border-color: rgba(24, 119, 242, 0.4);
+        }
+
+        .footer-watermark {
+            font-family: "Poppins", sans-serif;
+            font-size: 12vw;
+            font-weight: 900;
+            font-style: italic;
+            line-height: 0.85;
+            letter-spacing: -0.02em;
+            width: 100%;
+            text-align: center;
+            user-select: none;
+            margin-bottom: 0;
+        }
+
+        .watermark-line {
+            background: linear-gradient(to top, #222222 0%, #0a0a0a 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            display: inline-block;
+        }
+
+        /* Navbar Permanent Glow */
+        .nav-glow-border {
+            border: 3px solid rgb(212, 175, 55);
+        }
+
+        .logo-glow-border {
+            border-top: 3px solid rgb(212, 175, 55);
+            border-left: 1px solid rgb(212, 175, 55);
+            border-right: 1px solid rgb(212, 175, 55);
+        }
+    </style>
+</head>
+
+<body class="bg-temple-white text-charcoal font-sans min-h-screen flex flex-col overflow-x-hidden antialiased pt-32">
+
+    <!-- Fixed Pill-Shaped Navbar -->
+    <div class="fixed top-8 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-4xl px-4">
+        <!-- Main Navbar Container -->
+        <div
+            class="relative w-full h-16 bg-white/90 backdrop-blur-md rounded-full nav-glow-border flex items-center justify-between px-8 sm:px-12">
+
+            <!-- Left Links -->
+            <div
+                class="flex-1 flex items-center justify-start space-x-6 sm:space-x-10 text-[12px] sm:text-[13px] tracking-wide uppercase font-semibold text-charcoal/80">
+                <a href="#" class="hover:text-saffron-dark transition duration-300">home</a>
+
+                <!-- Rich Dropdown Container -->
+                <div class="relative group">
+                    <button id="jeevan-dropdown-btn"
+                        class="flex items-center gap-1.5 hover:text-saffron-dark transition duration-300 uppercase font-semibold text-[12px] sm:text-[13px] text-charcoal/80 focus:outline-none">
+                        Jeevan Parichay
+                        <i class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200"
+                            id="jeevan-chevron"></i>
+                    </button>
+
+                    <!-- Desktop Dropdown Menu (Light theme matching the new reference image) -->
+                    <div id="jeevan-dropdown-menu"
+                        class="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-[360px] bg-pure-white rounded-3xl shadow-[0_15px_40px_rgba(0,0,0,0.12)] opacity-0 invisible transition-all duration-300 p-4 border border-saffron z-50">
+
+                        <!-- Item 1: Highlighted active state with saffron/gold border -->
+                        <a href="#"
+                            class="flex items-start gap-4 p-4 mb-2 rounded-2xl bg-saffron/5 border border-saffron/40 hover:bg-saffron/10 transition duration-200 group/item">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-pure-white border border-saffron/30 flex items-center justify-center flex-shrink-0 group-hover/item:scale-105 transition-transform">
+                                <img src="/images/a.png" alt="Icon"
+                                    class="w-6 h-6 object-contain opacity-90 group-hover/item:opacity-100 transition">
+                            </div>
+                            <div>
+                                <h4 class="text-[14px] font-bold text-maroon mb-1 tracking-widest uppercase">Aacharya Shri 108 Sunder Sagarji Maharaj</h4>
+                               
+                            </div>
+                        </a>
+
+                        <!-- Item 2: Standard light state -->
+                        <a href="#"
+                            class="flex items-start gap-4 p-4 mb-2 rounded-2xl bg-saffron/5 border border-saffron/40 hover:bg-saffron/10 transition duration-200 group/item">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-pure-white border border-sand flex items-center justify-center flex-shrink-0 group-hover/item:border-saffron/30 group-hover/item:scale-105 transition">
+                                <img src="D:\Sunder_Sulkashya\images\b.JPG" alt="Icon"
+                                    class="w-6 h-6 object-contain opacity-70 group-hover/item:opacity-100 transition">
+                            </div>
+                            <div>
+                                <h4 class="text-[14px] font-bold text-maroon mb-1 tracking-widest uppercase">Aarika Shri 105 Sulakshyamati Mataji</h4>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Protruding Center Logo (Flush with bottom, extends up) -->
+            <div
+                class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[180px] sm:w-[220px] h-[85px] bg-white/95 backdrop-blur-xl rounded-t-[40px] logo-glow-border flex items-center justify-center pb-2 z-20">
+                <a href="#" class="flex items-center gap-2 sm:gap-3 mt-3">
+                    <i class="fa-solid fa-hands-praying text-saffron text-xl sm:text-2xl"></i>
+                    <span class="font-sans text-2xl sm:text-3xl text-maroon tracking-tight flex flex-col leading-none">
+                        <span class="font-bold">Sunder</span>
+                        <span
+                            class="-mt-1 ml-4 sm:ml-6 font-normal italic text-saffron-dark text-xs sm:text-sm">Sulakshya</span>
+                    </span>
+                </a>
+                <!-- This covers the bottom border to make it seamless with the nav -->
+                <div class="absolute bottom-0 left-0 w-full h-[2px] bg-white/95 z-30"></div>
+            </div>
+
+            <!-- Right Links -->
+            <div
+                class="flex-1 flex justify-end space-x-6 sm:space-x-10 text-[12px] sm:text-[13px] tracking-wide uppercase font-semibold text-charcoal/80 items-center">
+                <a href="#" class="hover:text-saffron-dark transition duration-300">Classes</a>
+                <a href="#" class="hover:text-saffron-dark transition duration-300">Social Media</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Main Hero Section -->
+    <main class="flex-grow flex items-center relative z-10 px-6 sm:px-12 py-20 lg:py-16">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center relative">
+
+            <!-- Left Content -->
+            <div class="max-w-xl z-20 mt-10 lg:mt-0">
+                <!-- Badge -->
+                <div
+                    class="inline-flex items-center gap-2 bg-pure-white border border-sand px-5 py-2 rounded-full text-[11px] uppercase tracking-widest font-medium text-saffron-dark mb-8 shadow-sm">
+                    <i class="fa-solid fa-om text-saffron"></i> <span>Divine Blessings</span>
+                </div>
+
+                <!-- Headline -->
+                <h1 class="text-5xl lg:text-6xl font-sans font-semibold text-maroon leading-[1.2] mb-8 tracking-tight">
+                    <br><i class="text-saffron-dark font-light">Aarika Shri 105</i> Sulakshya Mati Mataji
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-charcoal/80 text-lg mb-10 leading-relaxed max-w-md font-light">
+                    Guidance, peace & spiritual awakening. Welcome to the digital sanctuary for daily darshan,
+                    pravachan, and the path of Ahimsa.
+                </p>
+            </div>
+
+            <!-- Right Content (Visuals) -->
+            <div
+                class="relative h-[500px] lg:h-[650px] w-full flex items-center justify-center lg:justify-end overflow-visible">
+
+                <!-- Background Mandala/Aura Wheel -->
+                <div
+                    class="absolute right-[-10%] top-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full border border-saffron/20 opacity-60 z-0">
+                    <div
+                        class="absolute inset-0 m-auto w-[85%] h-[85%] rounded-full border border-saffron/30 border-dashed">
+                    </div>
+                    <div class="absolute inset-0 m-auto w-[70%] h-[70%] rounded-full border border-maroon/10"></div>
+                    <div class="absolute inset-0 m-auto w-[1px] h-full bg-saffron/10 rotate-45"></div>
+                    <div class="absolute inset-0 m-auto w-[1px] h-full bg-saffron/10 rotate-[-45]"></div>
+                </div>
+
+                <!-- Spiritual Cards Wrapper -->
+                <div class="relative z-10 w-[320px] h-[480px] mr-10">
+                    <!-- Back Card: Deep Maroon -->
+                    <div
+                        class="absolute inset-0 bg-maroon rounded-xl spiritual-panel-dark transform rotate-12 translate-x-12 translate-y-4 flex flex-col items-center justify-center p-6 text-gold overflow-hidden">
+                        <div class="absolute inset-2 border border-gold/40 rounded-lg"></div>
+                        <i class="fa-solid fa-leaf text-8xl opacity-10 absolute -right-6 -bottom-6 text-pure-white"></i>
+                        <i class="fa-solid fa-hands-praying text-6xl mb-4 text-saffron"></i>
+                        <div class="w-full border-t border-gold/30 my-6"></div>
+                        <p class="text-xs uppercase tracking-widest text-pure-white/80">Ahimsa Paramo Dharma</p>
+                    </div>
+
+                    <!-- Front Card: Pure White -->
+                    <div
+                        class="absolute inset-0 bg-pure-white rounded-xl spiritual-panel-light transform -rotate-6 flex flex-col items-center justify-between p-8 text-maroon">
+                        <i class="fa-solid fa-leaf text-[10px] absolute top-5 left-5 opacity-40 text-saffron-dark"></i>
+                        <i class="fa-solid fa-leaf text-[10px] absolute top-5 right-5 opacity-40 text-saffron-dark"></i>
+                        <i
+                            class="fa-solid fa-leaf text-[10px] absolute bottom-5 left-5 opacity-40 text-saffron-dark"></i>
+                        <i
+                            class="fa-solid fa-leaf text-[10px] absolute bottom-5 right-5 opacity-40 text-saffron-dark"></i>
+
+                        <div class="w-full flex justify-center mt-2">
+                            <i class="fa-solid fa-sun text-sm text-gold"></i>
+                        </div>
+
+                        <div class="flex flex-col items-center gap-4 my-auto">
+                            <i class="fa-regular fa-circle text-xl text-sand"></i>
+                            <div class="h-6 w-px bg-sand"></div>
+                            <i class="fa-solid fa-seedling text-3xl text-saffron-dark"></i>
+                            <div class="h-6 w-px bg-sand"></div>
+                            <i class="fa-solid fa-om text-5xl text-maroon"></i>
+                            <div class="h-6 w-px bg-sand"></div>
+                            <i class="fa-solid fa-seedling text-3xl text-saffron-dark"></i>
+                            <div class="h-6 w-px bg-sand"></div>
+                            <i class="fa-regular fa-circle text-xl text-sand"></i>
+                        </div>
+
+                        <div class="w-full flex justify-center mb-2">
+                            <i class="fa-solid fa-sun text-sm text-gold"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="sunder_sulakshya-footer">
+        <!-- Logo area -->
+        <div class="footer-logo">
+            <svg class="logo-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L13.5 10.5L22 12L13.5 13.5L12 22L10.5 13.5L2 12L10.5 10.5L12 2Z" fill="#D4AF37"
+                    stroke="none" />
+                <path d="M5 19 C 8 20, 12 18, 12 12" stroke="#D4AF37" fill="none" stroke-width="1.5"
+                    stroke-linecap="round" />
+            </svg>
+            <div class="logo-text">
+                Sunder<br>
+                <span class="italic font-normal text-saffron">Sulakshya</span>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <p class="footer-description">
+            Stay connected to the path of peace. Receive daily darshan, vihar updates, and spiritual guidance directly
+            from the community.
+        </p>
+
+        <!-- Highlighted Message -->
+        <div class="footer-message">
+            <h2 class="message-white">Walk the path of inner peace.</h2>
+            <h2 class="message-gold">Ahimsa Paramo Dharma.</h2>
+        </div>
+
+        <!-- Divider -->
+        <hr class="footer-divider">
+
+        <!-- Copyright -->
+        <p class="footer-copyright">
+            &copy; 2026 Sunder_Sulakshya. All rights reserved.<br>
+            <a href="https://www.instagram.com/team_sunder_lakshya?igsh=MTEyc3MyM2l1bGM0YQ==" target="_blank"
+                class="text-pure-white hover:text-gold transition duration-300">Managed By TEAM_SUNDER_LAKSHYA</a>
+        </p>
+
+        <!-- Neumorphic Social Media Buttons -->
+        <div class="social-links-container">
+            <a href="#" class="neu-social-btn whatsapp" title="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="https://www.instagram.com/team_sunder_lakshya?igsh=MTEyc3MyM2l1bGM0YQ==" target="_blank"
+                class="neu-social-btn instagram" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="#" class="neu-social-btn youtube" title="YouTube">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+            <a href="#" class="neu-social-btn facebook" title="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+        </div>
+
+        <!-- The Massive Background Watermark -->
+        <div class="footer-watermark">
+            <span class="watermark-line">Sunder</span><br>
+            <span class="watermark-line">Sulakshya</span>
+        </div>
+
+    </footer>
+
+    <!-- Mobile Drawer Overlay -->
+    <div id="mobile-drawer-overlay"
+        class="fixed inset-0 bg-charcoal/40 backdrop-blur-sm z-[60] hidden opacity-0 transition-opacity duration-300">
+        <!-- Drawer Content: Note the border-t-[3px] and border-gold to match navbar -->
+        <div id="mobile-drawer-content"
+            class="absolute bottom-0 left-0 w-full bg-pure-white rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)] transform translate-y-full transition-transform duration-300 p-6 pb-10 border-t-[3px] border-gold">
+            <!-- Drag Handle -->
+            <div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto mb-6"></div>
+
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-maroon uppercase tracking-wide">Jeevan Parichay</h3>
+                <button id="close-drawer-btn"
+                    class="w-8 h-8 flex items-center justify-center rounded-full bg-sand/50 text-charcoal hover:bg-sand transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <!-- Item 1: Highlighted Active State -->
+                <a href="#"
+                    class="flex items-start gap-4 p-4 rounded-2xl bg-saffron/5 border border-saffron/40 active:scale-[0.98] transition-transform">
+                    <div class="w-12 h-12 rounded-xl bg-pure-white border border-saffron/30 flex items-center justify-center flex-shrink-0">
+                        <img src="a.png" alt="Icon" class="w-6 h-6 object-contain">
+                    </div>
+                    <div>
+                        <h4 class="text-[14px] font-bold text-maroon mb-1 uppercase tracking-widest">Early Life</h4>
+                        <p class="text-[13px] text-charcoal/70 leading-relaxed">Discover the divine beginnings and the
+                            early journey.</p>
+                    </div>
+                </a>
+
+                <!-- Item 2: Standard State -->
+                <a href="#"
+                    class="flex items-start gap-4 p-4 rounded-2xl bg-temple-white border border-sand/60 active:scale-[0.98] transition-transform">
+                    <div class="w-12 h-12 rounded-xl bg-pure-white border border-sand flex items-center justify-center flex-shrink-0">
+                        <img src="a.png" alt="Icon" class="w-6 h-6 object-contain opacity-70">
+                    </div>
+                    <div>
+                        <h4 class="text-[14px] font-bold text-maroon mb-1 uppercase tracking-widest">Spiritual Path</h4>
+                        <p class="text-[13px] text-charcoal/70 leading-relaxed">Read about the path to enlightenment and
+                            core teachings.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dropdown and Drawer Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('jeevan-dropdown-btn');
+            const menu = document.getElementById('jeevan-dropdown-menu');
+            const chevron = document.getElementById('jeevan-chevron');
+
+            const overlay = document.getElementById('mobile-drawer-overlay');
+            const drawerContent = document.getElementById('mobile-drawer-content');
+            const closeBtn = document.getElementById('close-drawer-btn');
+
+            // Check if device is mobile based on screen width
+            const isMobile = () => window.innerWidth < 768;
+
+            function openDrawer() {
+                overlay.classList.remove('hidden');
+                // Small delay to allow display block to apply before animating opacity
+                setTimeout(() => {
+                    overlay.classList.remove('opacity-0');
+                    drawerContent.classList.remove('translate-y-full');
+                }, 10);
+            }
+
+            function closeDrawer() {
+                overlay.classList.add('opacity-0');
+                drawerContent.classList.add('translate-y-full');
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                }, 300);
+            }
+
+            function toggleDropdown(e) {
+                e.stopPropagation();
+                const isOpen = !menu.classList.contains('invisible');
+
+                if (isOpen) {
+                    menu.classList.add('invisible', 'opacity-0');
+                    menu.classList.remove('translate-y-2');
+                    chevron.classList.remove('rotate-180');
+                } else {
+                    menu.classList.remove('invisible', 'opacity-0');
+                    menu.classList.add('translate-y-2');
+                    chevron.classList.add('rotate-180');
+                }
+            }
+
+            // Main Click Handler
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (isMobile()) {
+                    openDrawer();
+                } else {
+                    toggleDropdown(e);
+                }
+            });
+
+            // Close logic for Mobile Drawer
+            closeBtn.addEventListener('click', closeDrawer);
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeDrawer();
+            });
+
+            // Close Desktop Dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!isMobile() && !btn.contains(e.target) && !menu.contains(e.target)) {
+                    menu.classList.add('invisible', 'opacity-0');
+                    menu.classList.remove('translate-y-2');
+                    chevron.classList.remove('rotate-180');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

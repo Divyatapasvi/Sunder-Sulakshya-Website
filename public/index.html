@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="Classes by Sulakshya Mati Mataji."
+  />
+
+  <title>Classes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+
+    <a href="/" class="brand">
+      <img
+        src="/images/logo.png"
+        alt="Divya Tapasya"
+        class="brand-logo"
+      />
+
+      <div class="brand-text">
+        <strong>Sulakshya Mati Mataji</strong>
+        <span>Classes &amp; Live Satsang</span>
+      </div>
+    </a>
+
+    <a
+      href="https://www.youtube.com/@Sulakshyamatimataji"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="youtube-button"
+    >
+      <span class="youtube-icon"></span>
+      YouTube Channel
+    </a>
+
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          DIVYA TAPASYA
+        </div>
+
+        <h1>
+          Classes, Satsang &amp;
+          <span>Live Teachings</span>
+        </h1>
+
+        <p class="hero-description">
+          Watch the latest live teachings from Sulakshya Mati Mataji
+          and explore the complete collection of classes and playlists.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="#classes" class="primary-button">
+            Explore Classes
+            <span>↓</span>
+          </a>
+
+          <a
+            href="https://www.youtube.com/@Sulakshyamatimataji"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="secondary-button"
+          >
+            Visit YouTube ↗
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-image-container">
+
+        <div class="hero-circle"></div>
+
+        <img
+          src="/guru.jpg"
+          alt="Sulakshya Mati Mataji"
+          class="hero-image"
+        />
+
+      </div>
+
+    </section>
+
+
+    <!-- LIVE SECTION -->
+    <section class="live-section">
+
+      <div class="section-heading">
+
+        <div>
+          <div class="eyebrow">
+            NOW / NEXT
+          </div>
+
+          <h2>
+            Live on YouTube
+          </h2>
+        </div>
+
+        <div
+          id="liveStatus"
+          class="live-status"
+        >
+          <span></span>
+          Checking live status...
+        </div>
+
+      </div>
+
+
+      <div id="liveContainer">
+
+        <div class="loading-card">
+
+          <div class="loading-image"></div>
+
+          <div class="loading-content">
+
+            <div class="loading-line"></div>
+            <div class="loading-line short"></div>
+            <div class="loading-line"></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PLAYLISTS -->
+    <section
+      class="classes-section"
+      id="classes"
+    >
+
+      <div class="section-heading">
+
+        <div>
+
+          <div class="eyebrow">
+            WATCH &amp; LEARN
+          </div>
+
+          <h2>
+            All Classes &amp; Playlists
+          </h2>
+
+        </div>
+
+        <div
+          id="playlistCount"
+          class="playlist-count"
+        ></div>
+
+      </div>
+
+
+      <div
+        id="playlistGrid"
+        class="playlist-grid"
+      >
+
+        <div class="playlist-loading"></div>
+        <div class="playlist-loading"></div>
+        <div class="playlist-loading"></div>
+
+      </div>
+
+
+      <div
+        id="playlistError"
+        class="message-box hidden"
+      >
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-brand">
+
+      <img
+        src="/logo.png"
+        alt=""
+      />
+
+      <span>
+        Divya Tapasya
+      </span>
+
+    </div>
+
+    <div class="footer-center">
+      © <span id="year"></span> Sulakshya Mati Mataji
+    </div>
+
+    <a
+      href="https://www.youtube.com/@Sulakshyamatimataji"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      YouTube ↗
+    </a>
+
+  </footer>
+
+
+  <script src="/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TikTok Analytics - iPhone Mockup</title>
+<style>
+  /* Base Reset & Fonts */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  
+  body {
+    /* Gradient matching the background */
+    background: linear-gradient(180deg, #3b1104 0%, #a23a10 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Main Wrapper for layering */
+  .mockup-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  /* Realistic iPhone Body */
+  .iphone-body {
+    position: relative;
+    width: 320px;
+    height: 640px;
+    border-radius: 50px;
+    background: #000; /* Black bezel */
+    /* Outer metallic rim + drop shadow */
+    box-shadow: 0 0 0 3px #d1d1d1, 0 25px 60px rgba(0,0,0,0.6); 
+    padding: 12px; /* Thickness of the bezel */
+  }
+
+  /* Hardware Buttons */
+  .button {
+    position: absolute;
+    background: #c8cacb;
+    box-shadow: inset -1px 0 2px rgba(0,0,0,0.3);
+  }
+  .btn-mute {
+    top: 110px; left: -4px; width: 4px; height: 25px; border-radius: 4px 0 0 4px;
+  }
+  .btn-vol-up {
+    top: 150px; left: -4px; width: 4px; height: 50px; border-radius: 4px 0 0 4px;
+  }
+  .btn-vol-down {
+    top: 215px; left: -4px; width: 4px; height: 50px; border-radius: 4px 0 0 4px;
+  }
+  .btn-power {
+    top: 170px; right: -4px; width: 4px; height: 75px; border-radius: 0 4px 4px 0;
+  }
+
+  /* iPhone Screen (inside the bezel) */
+  .iphone-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 38px; /* Inner screen corner radius */
+    background: #f8f8f8;
+    overflow: hidden;
+  }
+
+  /* The iPhone Dynamic Island */
+  .dynamic-island {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 96px;
+    height: 30px;
+    background: #000;
+    border-radius: 20px;
+    z-index: 5;
+  }
+
+  /* Background content inside the phone */
+  .phone-bg-content {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    padding: 60px 15px 20px;
+    opacity: 0.85; /* Slightly faded out to emphasize the pop-out card */
+  }
+  
+  .bg-header {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 25px;
+  }
+  
+  .bg-tabs {
+    display: flex;
+    gap: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 300px;
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .bg-tab.active {
+    color: #000;
+    font-weight: 600;
+    border-bottom: 2px solid #000;
+    padding-bottom: 9px;
+  }
+  
+  .bg-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  
+  .bg-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 15px;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Floating Image replacing the middle UI */
+  .floating-image {
+    position: absolute;
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 350px; /* Wider than the screen to overlap edges */
+    border-radius: 12px;
+    /* Deep 3D shadow effect */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 20;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* TikTok 3D Text Bottom */
+  .tiktok-logo {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: #fed900;
+    letter-spacing: -1.5px;
+    margin-top: 35px;
+    /* Extrusion/3D text shadow */
+    text-shadow: 
+      0px 2px 0px #b24115,
+      0px 3px 0px #8b2b0a,
+      0px 6px 15px rgba(0,0,0,0.7);
+  }
+</style>
+</head>
+<body>
+
+  <div class="mockup-wrapper">
+    
+    <!-- Realistic iPhone Body -->
+    <div class="iphone-body">
+      <!-- Hardware Buttons -->
+      <div class="button btn-mute"></div>
+      <div class="button btn-vol-up"></div>
+      <div class="button btn-vol-down"></div>
+      <div class="button btn-power"></div>
+      
+      <!-- Inner Screen Area -->
+      <div class="iphone-screen">
+        <div class="dynamic-island"></div>
+        
+        <!-- Background / Out-of-focus phone layer -->
+        <div class="phone-bg-content">
+          <div class="bg-header">Analytics</div>
+          <div class="bg-tabs">
+            <div class="bg-tab active">Overview</div>
+            <div class="bg-tab">Content</div>
+            <div class="bg-tab">View</div>
+          </div>
+          
+          <div class="bg-grid">
+            <div class="bg-card">
+              <span style="font-size: 28px; font-weight: 800; align-self: flex-start; margin-top: 15px;">K</span>
+            </div>
+            <div class="bg-card">
+              <span style="font-size: 16px; font-weight: 600;">Est. rewards</span>
+              <span style="font-size: 24px; font-weight: 800;">-</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Your Uploaded Photo for the Middle Part -->
+    <img src="/images/b.JPG" alt="Analytics Modal" class="floating-image">
+
+  </div>
+
+  <!-- Bottom Logo -->
+  <div class="tiktok-logo">Tiktok</div>
+
+</body>
+</html>
