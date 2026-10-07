@@ -148,7 +148,8 @@
 
         @media (min-width: 769px) {
             .hero-banner-container {
-                height: 85vh;
+                aspect-ratio: 3375 / 1688;
+                height: auto;
             }
         }
 
@@ -172,7 +173,7 @@
         .hero-slide img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures the whole banner image is fully visible without being cropped */
+            object-fit: contain; /* Ensures the whole banner image is fully visible without being cropped */
             object-position: center;
             
         }
