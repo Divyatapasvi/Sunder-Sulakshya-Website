@@ -1,0 +1,508 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        facebook: '#1877F2',
+                        spotify: '#1DB954',
+                        ig: '#E1306C',
+                        darkbg: '#0B0B13',
+                        btnbg: '#16161E'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #05050A;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .phone-content, .action-content {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .phone-content.hidden, .action-content.hidden {
+            display: none;
+            opacity: 0;
+            transform: scale(0.98);
+        }
+
+        .phone-content.active {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        .action-content.active {
+            display: flex;
+            opacity: 1;
+            transform: scale(1);
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(100px);
+            z-index: 0;
+            opacity: 0.3;
+            animation: float 10s infinite ease-in-out alternate;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-30px) scale(1.05); }
+        }
+    </style>
+</head>
+<body class="min-h-screen relative flex flex-col items-center py-12 text-slate-100">
+
+    <div class="blob top-[10%] left-[-10%] w-[500px] h-[500px] bg-purple-900 rounded-full"></div>
+    <div class="blob bottom-[10%] right-[-10%] w-[400px] h-[400px] bg-blue-900 rounded-full" style="animation-delay: -5s;"></div>
+
+    <!-- Main Container: Centered Single Column Layout -->
+    <div class="relative z-10 max-w-4xl mx-auto px-4 w-full flex flex-col items-center py-10 space-y-16">
+        
+        <!-- 1. Content in Center -->
+        <div class="w-full flex flex-col items-center text-center space-y-7">
+            <div class="space-y-5">
+                <div class="inline-block px-4 py-1.5 rounded-full bg-white/5 border border-white/5 text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-slate-300">
+                    Digital Showcase
+                </div>
+                
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                    Connect With Me <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#D946EF] to-[#8B5CF6]">
+                        Across Platforms.
+                    </span>
+                </h1>
+                
+                <p class="text-slate-400 text-base lg:text-lg max-w-lg mx-auto leading-relaxed">
+                    Explore my digital presence. Toggle between platforms below to see my latest posts, thoughts, and favorite playlists directly in the interactive mockup.
+                </p>
+            </div>
+
+            <!-- Platform Switch Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 w-full pt-4">
+                <button onclick="switchPlatform('instagram')" id="btn-instagram" class="nav-btn group flex items-center gap-3 px-5 py-3 rounded-2xl bg-btnbg border border-transparent transition-all duration-300 ring-2 ring-ig hover:bg-white/5 shadow-[0_0_15px_rgba(225,48,108,0.3)]">
+                    <div class="w-6 h-6 rounded-full bg-[#30161F] flex items-center justify-center text-ig">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="2.5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke-width="2.5"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2.5" stroke-linecap="round"></line></svg>
+                    </div>
+                    <span class="font-semibold text-slate-200 text-sm">Instagram</span>
+                </button>
+
+                <button onclick="switchPlatform('facebook')" id="btn-facebook" class="nav-btn group flex items-center gap-3 px-5 py-3 rounded-2xl bg-btnbg border border-transparent transition-all duration-300 hover:bg-white/5">
+                    <div class="w-6 h-6 rounded-full bg-[#182C4D] flex items-center justify-center text-facebook">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </div>
+                    <span class="font-semibold text-slate-400 group-hover:text-slate-200 transition-colors text-sm">Facebook</span>
+                </button>
+
+                <button onclick="switchPlatform('spotify')" id="btn-spotify" class="nav-btn group flex items-center gap-3 px-5 py-3 rounded-2xl bg-btnbg border border-transparent transition-all duration-300 hover:bg-white/5">
+                    <div class="w-6 h-6 rounded-full bg-[#163422] flex items-center justify-center text-spotify">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10 5.523 0 10-4.477 10-10 0-5.523-4.477-10-10-10zm4.586 14.424a.623.623 0 0 1-.854.204c-2.34-1.429-5.286-1.75-8.762-.96a.625.625 0 0 1-.277-1.22c3.785-.86 7.054-.486 9.689 1.122a.622.622 0 0 1 .204.854zm1.218-2.723a.78.78 0 0 1-1.072.257c-2.686-1.65-6.786-2.13-9.965-1.166a.781.781 0 1 1-.453-1.498c3.626-1.101 8.163-.564 11.233 1.335a.78.78 0 0 1 .257 1.072zm.126-2.863C14.73 8.94 10.024 8.766 6.78 9.75a.976.976 0 1 1-.571-1.865c3.73-1.135 9.012-.924 12.753 1.298a.976.976 0 1 1-1.032 1.655z"></path></svg>
+                    </div>
+                    <span class="font-semibold text-slate-400 group-hover:text-slate-200 transition-colors text-sm">Spotify</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 2. iPhone Mockup in Center -->
+        <div class="w-full flex justify-center items-center relative perspective-[1000px]">
+            <div class="relative inline-block w-full max-w-[300px] xl:max-w-[340px] drop-shadow-2xl hover:-translate-y-2 transition-transform duration-500 ease-out" style="aspect-ratio: 433/882;">
+                
+                <div class="absolute z-0 overflow-hidden bg-black flex flex-col shadow-inner" style="left: 4.907%; top: 2.182%; width: 89.953%; height: 95.634%; border-radius: 14.313% / 6.609%;">
+                    <div id="content-instagram" class="phone-content active w-full h-full overflow-y-auto overflow-x-hidden bg-black scrollbar-hide">
+                        <img src="/images/insta1.jpeg" alt="Instagram Screenshot" class="w-full h-auto object-top" />
+                    </div>
+                    <div id="content-facebook" class="phone-content hidden w-full h-full overflow-y-auto overflow-x-hidden bg-black scrollbar-hide">
+                        <img src="YOUR_FACEBOOK_SCREENSHOT_URL.jpg" alt="Facebook Screenshot" class="w-full h-auto object-top" />
+                    </div>
+                    <div id="content-spotify" class="phone-content hidden w-full h-full overflow-y-auto overflow-x-hidden bg-black scrollbar-hide">
+                        <img src="YOUR_SPOTIFY_SCREENSHOT_URL.jpg" alt="Spotify Screenshot" class="w-full h-auto object-top" />
+                    </div>
+                </div>
+
+                <svg viewBox="0 0 433 882" fill="none" xmlns="http://www.w3.org/2000/svg" class="pointer-events-none absolute inset-0 w-full h-full z-10 drop-shadow-2xl" style="transform: translateZ(0);">
+                    <g mask="url(#screenPunch)">
+                        <path d="M2 73C2 32.6832 34.6832 0 75 0H357C397.317 0 430 32.6832 430 73V809C430 849.317 397.317 882 357 882H75C34.6832 882 2 849.317 2 809V73Z" class="fill-[#262626]" />
+                        <path d="M0 171C0 170.448 0.447715 170 1 170H3V204H1C0.447715 204 0 203.552 0 203V171Z" class="fill-[#404040]" />
+                        <path d="M1 234C1 233.448 1.44772 233 2 233H3.5V300H2C1.44772 300 1 299.552 1 299V234Z" class="fill-[#404040]" />
+                        <path d="M1 319C1 318.448 1.44772 318 2 318H3.5V385H2C1.44772 385 1 384.552 1 384V319Z" class="fill-[#404040]" />
+                        <path d="M430 279H432C432.552 279 433 279.448 433 280V384C433 384.552 432.552 385 432 385H430V279Z" class="fill-[#404040]" />
+                        <path d="M6 74C6 35.3401 37.3401 4 76 4H356C394.66 4 426 35.3401 426 74V808C426 846.66 394.66 878 356 878H76C37.3401 878 6 846.66 6 808V74Z" class="fill-[#0a0a0a]" />
+                    </g>
+                    <path opacity="0.5" d="M174 5H258V5.5C258 6.60457 257.105 7.5 256 7.5H176C174.895 7.5 174 6.60457 174 5.5V5Z" class="fill-[#404040]" />
+                    <path d="M21.25 75C21.25 44.2101 46.2101 19.25 77 19.25H355C385.79 19.25 410.75 44.2101 410.75 75V807C410.75 837.79 385.79 862.75 355 862.75H77C46.2101 862.75 21.25 837.79 21.25 807V75Z" class="fill-transparent stroke-[#404040] stroke-[0.5]" mask="url(#screenPunch)" />
+                    <path d="M154 48.5C154 38.2827 162.283 30 172.5 30H259.5C269.717 30 278 38.2827 278 48.5C278 58.7173 269.717 67 259.5 67H172.5C162.283 67 154 58.7173 154 48.5Z" class="fill-black" />
+                    <path d="M249 48.5C249 42.701 253.701 38 259.5 38C265.299 38 270 42.701 270 48.5C270 54.299 265.299 59 259.5 59C253.701 59 249 54.299 249 48.5Z" class="fill-[#1a1a1a]" />
+                    <path d="M254 48.5C254 45.4624 256.462 43 259.5 43C262.538 43 265 45.4624 265 48.5C265 51.5376 262.538 54 259.5 54C256.462 54 254 51.5376 254 48.5Z" class="fill-[#0f0f0f]" />
+                    <defs>
+                        <mask id="screenPunch" maskUnits="userSpaceOnUse">
+                            <rect x="0" y="0" width="433" height="882" fill="white" />
+                            <rect x="21.25" y="19.25" width="389.5" height="843.5" rx="55.75" ry="55.75" fill="black" />
+                        </mask>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+
+        <!-- 3. Dynamic Action Area (Button + Photo) -->
+        <div class="w-full flex flex-col items-center justify-center max-w-4xl mx-auto">
+            
+            <!-- Instagram -->
+            <div id="action-instagram" class="action-content active flex-col items-center w-full space-y-8">
+                <a href="https://www.instagram.com/sunder_sulakshya?stkn=cG9xc244enltMGx3" target="_blank" class="px-8 py-3 rounded-full bg-ig text-white font-bold tracking-wide hover:bg-opacity-80 transition-all shadow-[0_4px_20px_rgba(225,48,108,0.4)]">
+                    Open Instagram
+                </a>
+                <img src="/images/insta.png" alt="team_sunder_lakshya Instagram Profile" class="w-full max-w-3xl rounded-2xl shadow-2xl border border-white/10" />
+            </div>
+
+            <!-- Facebook -->
+            <div id="action-facebook" class="action-content hidden flex-col items-center w-full space-y-8">
+                <a href="https://www.facebook.com/share/1J58buMPs1/" target="_blank" class="px-8 py-3 rounded-full bg-facebook text-white font-bold tracking-wide hover:bg-opacity-80 transition-all shadow-[0_4px_20px_rgba(24,119,242,0.4)]">
+                    Open Facebook
+                </a>
+                <div class="w-full max-w-3xl aspect-[16/5] rounded-2xl bg-btnbg/50 border-2 border-dashed border-white/10 flex flex-col items-center justify-center text-slate-500">
+                    <svg class="w-10 h-10 mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <span class="text-sm font-medium">Replace with facebook.png</span>
+                </div>
+            </div>
+
+            <!-- Spotify -->
+            <div id="action-spotify" class="action-content hidden flex-col items-center w-full space-y-8">
+                <a href="https://spotify.com" target="_blank" class="px-8 py-3 rounded-full bg-spotify text-white font-bold tracking-wide hover:bg-opacity-80 transition-all shadow-[0_4px_20px_rgba(29,185,84,0.4)]">
+                    Open Spotify
+                </a>
+                <div class="w-full max-w-3xl aspect-[16/5] rounded-2xl bg-btnbg/50 border-2 border-dashed border-white/10 flex flex-col items-center justify-center text-slate-500">
+                    <svg class="w-10 h-10 mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <span class="text-sm font-medium">Replace with spotify.png</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const config = {
+            instagram: {
+                ring: 'ring-ig',
+                shadow: 'shadow-[0_0_15px_rgba(225,48,108,0.3)]'
+            },
+            facebook: {
+                ring: 'ring-facebook',
+                shadow: 'shadow-[0_0_15px_rgba(24,119,242,0.3)]'
+            },
+            spotify: {
+                ring: 'ring-spotify',
+                shadow: 'shadow-[0_0_15px_rgba(29,185,84,0.3)]'
+            }
+        };
+
+        function switchPlatform(platform) {
+            // 1. Update Mockup Pane
+            const allContent = document.querySelectorAll('.phone-content');
+            allContent.forEach(content => {
+                content.classList.remove('active');
+                content.classList.add('hidden');
+            });
+            
+            const targetContent = document.getElementById(`content-${platform}`);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+                setTimeout(() => {
+                    targetContent.classList.add('active');
+                }, 10);
+            }
+
+            // 2. Update Action Area (Buttons and Photos)
+            const allActions = document.querySelectorAll('.action-content');
+            allActions.forEach(action => {
+                action.classList.remove('active');
+                action.classList.add('hidden');
+            });
+            
+            const targetAction = document.getElementById(`action-${platform}`);
+            if (targetAction) {
+                targetAction.classList.remove('hidden');
+                setTimeout(() => {
+                    targetAction.classList.add('active');
+                }, 10);
+            }
+
+            // 3. Update Nav Buttons
+            const allBtns = document.querySelectorAll('.nav-btn');
+            allBtns.forEach(btn => {
+                btn.classList.remove('ring-2', config.instagram.ring, config.facebook.ring, config.spotify.ring);
+                btn.classList.remove(config.instagram.shadow, config.facebook.shadow, config.spotify.shadow);
+                
+                const textSpan = btn.querySelector('span');
+                if (textSpan) {
+                    textSpan.classList.remove('text-slate-200');
+                    textSpan.classList.add('text-slate-400');
+                }
+            });
+            
+            const activeBtn = document.getElementById(`btn-${platform}`);
+            if (activeBtn) {
+                activeBtn.classList.add('ring-2', config[platform].ring, config[platform].shadow);
+                
+                const textSpan = activeBtn.querySelector('span');
+                if (textSpan) {
+                    textSpan.classList.remove('text-slate-400');
+                    textSpan.classList.add('text-slate-200');
+                }
+            }
+        }
+    </script>
+</body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TikTok Analytics - iPhone Mockup</title>
+<style>
+  /* Base Reset & Fonts */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  
+  body {
+    /* Gradient matching the background */
+    background: linear-gradient(180deg, #3b1104 0%, #a23a10 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Main Wrapper for layering */
+  .mockup-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  /* Realistic iPhone Body */
+  .iphone-body {
+    position: relative;
+    width: 320px;
+    height: 640px;
+    border-radius: 50px;
+    background: #000; /* Black bezel */
+    /* Outer metallic rim + drop shadow */
+    box-shadow: 0 0 0 3px #d1d1d1, 0 25px 60px rgba(0,0,0,0.6); 
+    padding: 12px; /* Thickness of the bezel */
+  }
+
+  /* Hardware Buttons */
+  .button {
+    position: absolute;
+    background: #c8cacb;
+    box-shadow: inset -1px 0 2px rgba(0,0,0,0.3);
+  }
+  .btn-mute {
+    top: 110px; left: -4px; width: 4px; height: 25px; border-radius: 4px 0 0 4px;
+  }
+  .btn-vol-up {
+    top: 150px; left: -4px; width: 4px; height: 50px; border-radius: 4px 0 0 4px;
+  }
+  .btn-vol-down {
+    top: 215px; left: -4px; width: 4px; height: 50px; border-radius: 4px 0 0 4px;
+  }
+  .btn-power {
+    top: 170px; right: -4px; width: 4px; height: 75px; border-radius: 0 4px 4px 0;
+  }
+
+  /* iPhone Screen (inside the bezel) */
+  .iphone-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 38px; /* Inner screen corner radius */
+    background: #f8f8f8;
+    overflow: hidden;
+  }
+
+  /* The iPhone Dynamic Island */
+  .dynamic-island {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 96px;
+    height: 30px;
+    background: #000;
+    border-radius: 20px;
+    z-index: 5;
+  }
+
+  /* Background content inside the phone */
+  .phone-bg-content {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    padding: 60px 15px 20px;
+    opacity: 0.85; /* Slightly faded out to emphasize the pop-out card */
+  }
+  
+  .bg-header {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 25px;
+  }
+  
+  .bg-tabs {
+    display: flex;
+    gap: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 300px;
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .bg-tab.active {
+    color: #000;
+    font-weight: 600;
+    border-bottom: 2px solid #000;
+    padding-bottom: 9px;
+  }
+  
+  .bg-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  
+  .bg-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 15px;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Floating Image replacing the middle UI */
+  .floating-image {
+    position: absolute;
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 350px; /* Wider than the screen to overlap edges */
+    border-radius: 12px;
+    /* Deep 3D shadow effect */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 20;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* TikTok 3D Text Bottom */
+  .tiktok-logo {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: #fed900;
+    letter-spacing: -1.5px;
+    margin-top: 35px;
+    /* Extrusion/3D text shadow */
+    text-shadow: 
+      0px 2px 0px #b24115,
+      0px 3px 0px #8b2b0a,
+      0px 6px 15px rgba(0,0,0,0.7);
+  }
+</style>
+</head>
+<body>
+
+  <div class="mockup-wrapper">
+    
+    <!-- Realistic iPhone Body -->
+    <div class="iphone-body">
+      <!-- Hardware Buttons -->
+      <div class="button btn-mute"></div>
+      <div class="button btn-vol-up"></div>
+      <div class="button btn-vol-down"></div>
+      <div class="button btn-power"></div>
+      
+      <!-- Inner Screen Area -->
+      <div class="iphone-screen">
+        <div class="dynamic-island"></div>
+        
+        <!-- Background / Out-of-focus phone layer -->
+        <div class="phone-bg-content">
+          <div class="bg-header">Analytics</div>
+          <div class="bg-tabs">
+            <div class="bg-tab active">Overview</div>
+            <div class="bg-tab">Content</div>
+            <div class="bg-tab">View</div>
+          </div>
+          
+          <div class="bg-grid">
+            <div class="bg-card">
+              <span style="font-size: 28px; font-weight: 800; align-self: flex-start; margin-top: 15px;">K</span>
+            </div>
+            <div class="bg-card">
+              <span style="font-size: 16px; font-weight: 600;">Est. rewards</span>
+              <span style="font-size: 24px; font-weight: 800;">-</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Your Uploaded Photo for the Middle Part -->
+    <img src="/images/b.JPG" alt="Analytics Modal" class="floating-image">
+
+  </div>
+
+  <!-- Bottom Logo -->
+  <div class="tiktok-logo">Tiktok</div>
+
+</body>
+>>>>>>> a1eaeac9cb3f17eee8b0e2a716c35bfd488433ad
+</html>

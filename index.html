@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarika Shri 105 Sulakshya Mati Mataji</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'temple-white': '#F4EFE6', 
+                        'pure-white': '#FFFFFF',
+                        'saffron': '#F39C12',
+                        'saffron-dark': '#D35400',
+                        'maroon': '#701710',
+                        'charcoal': '#2C2A29',
+                        'gold': '#D4AF37',
+                        'sand': '#E5E0D8',
+                        'theme-dark-brown': '#3D3630', 
+                        'theme-taupe': '#7F7365',      
+                        'theme-pink': '#C13565',
+                        'banner-burgundy': '#5C162B', 
+                        'banner-gold': '#D2A85B' 
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'system-ui', 'sans-serif'],
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts: Montserrat and Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Import Date Badge Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Jost:wght@500;600&display=swap');
+
+        :root {
+            --nav-text: #e7b45a;
+            --nav-text-soft: #e7b45a;
+            --nav-bg-scrolled: #4c1020eb;
+            --badge-maroon: #4c1020;
+            --badge-gold-lt: #e7c877;
+            --badge-ctext: #f6e7c6;
+            --badge-bg: #c21e632e;
+        }
+
+        /* --- Date Badge Button Styles --- */
+        .date-badge {
+            border: 1px solid var(--badge-gold-lt);
+            background: var(--badge-maroon);
+            padding: 16px 28px;
+            display: inline-block;
+            font-family: 'Jost', sans-serif;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .date-badge:hover {
+            background-color: var(--badge-maroon);
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .date-badge .dl {
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--badge-gold-lt);
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: block;
+        }
+
+        /* --- Lightbox Modal Styles --- */
+        .video-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .video-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content-wrapper {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(210, 168, 91, 0.3);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: -45px;
+            right: 0;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 28px;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close-btn:hover {
+            color: var(--badge-gold-lt);
+        }
+
+        /* --- Hero Carousel Styles (Dynamic 1080x1350 aspect ratio / contain on mobile) --- */
+        .hero-banner-container {
+            width: 100%;
+            background-color: #0a0a0a;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner-container {
+                aspect-ratio: 1080 / 1350; /* Exact mobile portrait requirement */
+                max-height: 85vh;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .hero-banner-container {
+                height: 85vh;
+            }
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.7s ease-in-out;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0a0a0a;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 15;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the whole banner image is fully visible without being cropped */
+            object-position: center;
+            
+        }
+
+        .hero-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-dot:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .hero-dot.active {
+            background-color: #ffffff;
+            transform: scale(1.2);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .slider-btn {
+            background-color: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background-color: rgba(0, 0, 0, 0.6);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        /* --- Gradient Closing Section --- */
+        .final {
+            width: 100%;
+            min-height: 586px;
+            background:
+                radial-gradient(100% 130% at 50% -20%, #e8792e57 0%, transparent 55%),
+                linear-gradient(120deg, #4c1020 0%, #6e1a2e 100%);
+            color: #ffffff;
+            padding: 50px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border-top: 4px solid #D4AF37;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* =========================================
+           GRADIENT FOOTER MESSAGE SECTION
+           ========================================= */
+
+        .footer-gradient {
+            width: 100%;
+            min-height: 400px;
+            background:
+                radial-gradient(
+                    100% 130% at 50% -20%,
+                    #e8792e57 0%,
+                    transparent 55%
+                ),
+                linear-gradient(
+                    120deg,
+                    #4c1020 0%,
+                    #6e1a2e 100%
+                );
+            color: #ffffff;
+            padding: 70px 20px 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+
+        .footer-description {
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.7;
+            max-width: 600px;
+            margin-bottom: 60px;
+        }
+
+        .footer-message {
+            margin-bottom: 0;
+        }
+
+        .message-white {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+            color: #ffffff;
+        }
+
+        .message-gold {
+            font-size: 2rem;
+            font-weight: 500;
+            font-style: italic;
+            color: #F39C12;
+            letter-spacing: 0.02em;
+        }
+
+        /* =========================================
+           BLACK COPYRIGHT + SOCIAL SECTION
+           ========================================= */
+
+        .footer-social-section {
+            width: 100%;
+            min-height: 0px;
+            background: #0a0a0a;
+            color: #ffffff;
+            padding: 0 20px 0px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-divider {
+            width: 750px;
+            max-width: 90%;
+            height: 1px;
+            
+            border: none;
+            margin: 0 auto 38px;
+        }
+
+        .footer-copyright {
+            color: #E5E0D8;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.8;
+            letter-spacing: 0.05em;
+            margin-bottom: 22px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-copyright a {
+            color: #E5E0D8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-copyright a:hover {
+            color: #D4AF37;
+        }
+
+        /* =========================================
+           SOCIAL BUTTONS
+           ========================================= */
+
+        .social-links-container {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 10;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .neu-social-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background-color: #0a0a0a;
+            border: 4px solid rgba(229, 224, 216, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #E5E0D8;
+            font-size: 1.4rem;
+            box-shadow: 6px 6px 12px #000000, -6px -6px 12px #181818;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .neu-social-btn:hover {
+            box-shadow: inset 5px 5px 10px #000000, inset -5px -5px 10px #181818;
+            border-color: rgba(229, 224, 216, 0.3);
+        }
+
+        .neu-social-btn.whatsapp:hover {
+            color: #25D366;
+            border-color: rgba(37, 211, 102, 0.4);
+        }
+
+        .neu-social-btn.instagram:hover {
+            color: #E1306C;
+            border-color: rgba(225, 48, 108, 0.4);
+        }
+
+        .neu-social-btn.youtube:hover {
+            color: #FF0000;
+            border-color: rgba(255, 0, 0, 0.4);
+        }
+
+        .neu-social-btn.facebook:hover {
+            color: #1877F2;
+            border-color: rgba(24, 119, 242, 0.4);
+        }
+
+        /* =========================================
+           BLACK WATERMARK SECTION
+           ========================================= */
+
+        .sunder_sulakshya-footer {
+            width: 100%;
+            min-height: 300px;
+            background: #0a0a0a;
+            color: #ffffff;
+            padding: 40px 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .footer-watermark {
+            font-size: 12vw;
+            font-weight: 900;
+            font-style: italic;
+            line-height: 0.85;
+            letter-spacing: -0.02em;
+            width: 100%;
+            text-align: center;
+            user-select: none;
+            margin-bottom: 0;
+        }
+
+        .watermark-line {
+            background: linear-gradient(to top, #222222 0%, #0a0a0a 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            display: inline-block;
+        }
+
+        /* --- Navigation Styles --- */
+        .site-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 0;
+            background: transparent;
+            pointer-events: none;
+            transform: translateY(-100%);
+            transition: transform 0.4s ease;
+        }
+
+        .site-navbar.visible {
+            transform: translateY(0);
+        }
+
+        .navbar-inner {
+            width: 100%;
+            min-height: 90px;
+            margin: 0;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            background: #4c1020eb;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(231, 200, 119, 0.15);
+            pointer-events: auto;
+        }
+
+        .navbar-brand {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        
+
+        .navbar-links {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: clamp(20px, 2.8vw, 40px);
+        }
+
+        .nav-link {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            min-height: 48px;
+            color: #e7b45a;
+            text-decoration: none;
+            font-size: clamp(15px, 1.2vw, 19px);
+            font-weight: 600;
+            letter-spacing: .03em;
+            white-space: nowrap;
+            transition: color .25s ease, transform .25s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 6px;
+            height: 2px;
+            border-radius: 999px;
+            background: #e7b45a;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform .25s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #e7b45a;
+        }
+
+        .nav-link:hover {
+            transform: translateY(-1px);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            transform: scaleX(1);
+        }
+
+        .hamburger-btn,
+        .close-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: #e7b45a;
+            cursor: pointer;
+        }
+
+        .hamburger-btn {
+            font-size: 26px;
+            pointer-events: auto;
+        }
+
+        .nav-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(44, 42, 41, 0.7);
+            z-index: 90;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+            pointer-events: auto;
+        }
+
+        @media (max-width: 900px) {
+            .site-navbar { padding: 0; }
+            .navbar-inner { 
+                min-height: 76px; 
+                padding: 0 20px; 
+                gap: 14px; 
+                justify-content: flex-end;
+            }
+            .navbar-brand {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .navbar-brand-logo { width: 140px; }
+            .hamburger-btn { display: block; }
+            .nav-overlay.active { opacity: 1; visibility: visible; }
+            .navbar-links {
+                position: fixed; top: 0; right: 0; width: 300px; max-width: 85vw; height: 100vh;
+                background-color: #4c1020;
+                flex-direction: column; justify-content: flex-start;
+                align-items: flex-start; padding: 80px 30px 40px; gap: 20px; z-index: 95;
+                transform: translateX(100%); transition: transform 0.3s ease-in-out;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
+            }
+            .navbar-links.active { transform: translateX(0); }
+            .close-btn { display: block; position: absolute; top: 20px; right: 25px; font-size: 28px; }
+            .nav-link { font-size: 16px; min-height: 44px; width: 100%; color: #e7b45a; }
+            .nav-link::after { bottom: 0px; }
+        }
+
+        @media (max-width: 600px) {
+            .navbar-brand-logo { width: 120px; }
+        }
+
+        /* =========================================
+            3D CYLINDER CAROUSEL STYLES
+            ========================================= */
+
+        .carousel-scene {
+            background-color: #030303;
+            overflow: hidden;
+            perspective: 1200px;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .ambient-glow {
+            position: absolute;
+            width: 70%;
+            height: 50%;
+            background: radial-gradient(ellipse at center, rgba(14, 53, 94, 0.4) 0%, rgba(0, 0, 0, 0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .carousel-positioner {
+            transform-style: preserve-3d;
+            transform: translateZ(380px);
+            z-index: 10;
+        }
+
+        .carousel-cylinder {
+            width: 220px;
+            height: 330px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: spinCylinder 45s linear infinite;
+        }
+
+        .carousel-cylinder:hover {
+            animation-play-state: paused;
+        }
+
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #000;
+            backface-visibility: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 60px rgba(0, 0, 0, 1), 0 20px 40px rgba(0, 0, 0, 0.9), inset 0 0 40px rgba(0, 0, 0, 0.95);
+            -webkit-box-reflect: below 6px linear-gradient(transparent 50%, rgba(0, 0, 0, 0.85) 100%);
+            transition: transform 0.4s ease;
+            cursor: pointer;
+            will-change: transform;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .carousel-item:hover img {
+            transform: scale(1.05);
+        }
+
+        @keyframes spinCylinder {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(-360deg); }
+        }
+
+        .vignette-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, #030303 0%, rgba(3, 3, 3, 0) 25%, rgba(3, 3, 3, 0) 75%, #030303 100%);
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        .vignette-top-bottom {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, #030303 0%, rgba(3, 3, 3, 0) 15%, rgba(3, 3, 3, 0) 85%, #030303 100%);
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        /* Responsive 3D Adjustments */
+        @media (max-width: 1024px) {
+            .carousel-scene { min-height: 500px; }
+            .carousel-positioner { transform: translateZ(250px) scale(0.85); }
+        }
+
+        @media (max-width: 768px) {
+            .carousel-scene { height: 60vh; min-height: 450px; }
+            .carousel-positioner { transform: translateZ(320px) scale(0.75); }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-scene { height: 50vh; min-height: 350px; }
+            .carousel-positioner { transform: translateZ(220px) scale(0.65); }
+            .carousel-cylinder { width: 160px; height: 240px; } 
+            .vignette-overlay { background: linear-gradient(90deg, #030303 0%, rgba(3, 3, 3, 0) 5%, rgba(3, 3, 3, 0) 95%, #030303 100%); }
+        }
+    </style>
+</head>
+
+<body class="bg-temple-white font-sans min-h-screen flex flex-col overflow-x-hidden antialiased">
+
+    <nav class="site-navbar" aria-label="Main navigation">
+        <div class="nav-overlay"></div>
+        <div class="navbar-inner">
+            <a href="index.html" class="navbar-brand" aria-label="Home">
+                <img src="images/logo.png" class="navbar-brand-logo"
+                    style="filter: brightness(0) invert(1); width: 200px; height: auto; object-fit: contain;">
+            </a>
+            <button class="hamburger-btn" aria-label="Open Menu"><i class="fa-solid fa-bars"></i></button>
+            <div class="navbar-links" id="dynamic-nav">
+                <button class="close-btn" aria-label="Close Menu"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Top Hero Image Carousel Section with Dynamic Mobile Aspect Ratio (1080x1350 equivalent) -->
+    <header class="hero-banner-container relative overflow-hidden group">
+        <div id="hero-slides-container" class="w-full h-full relative">
+            <!-- Slides injected via JS -->
+        </div>
+        
+        <button id="prev-slide" aria-label="Previous Slide" class="slider-btn absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full text-white flex items-center justify-center opacity-0 group-hover:opacity-100 z-20">
+            <i class="fa-solid fa-chevron-left text-lg md:text-xl"></i>
+        </button>
+        <button id="next-slide" aria-label="Next Slide" class="slider-btn absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full text-white flex items-center justify-center opacity-0 group-hover:opacity-100 z-20">
+            <i class="fa-solid fa-chevron-right text-lg md:text-xl"></i>
+        </button>
+
+        <div id="hero-dots-container" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
+            <!-- Dots injected via JS -->
+        </div>
+    </header>
+
+    <!-- About The Mahotsav Section -->
+
+    <section class="py-20 md:py-32 px-6 relative bg-temple-white z-20">
+        <div class="max-w-[1000px] mx-auto text-center">
+            
+            <!-- Kicker / Subtitle -->
+            <h4 class="text-theme-pink text-xs md:text-sm font-semibold tracking-[0.25em] uppercase mb-8 md:mb-10">
+                Sunder Sulakshya
+            </h4>
+
+
+
+            <!-- Main Title (Serif) -->
+            <h2 class="font-serif text-3xl md:text-5xl lg:text-[54px] text-theme-dark-brown leading-[1.3] md:leading-[1.4] mb-12 max-w-4xl mx-auto">
+                <em class="text-theme-pink italic font-serif">The Timeless Path</em>
+                that leads<br class="hidden md:block"> the soul toward true<br class="hidden md:block"> and everlasting happiness.
+            </h2>
+
+            <!-- Paragraphs (Sans-serif) -->
+            <div class="text-theme-taupe text-base md:text-[17px] font-medium leading-relaxed space-y-8 max-w-4xl mx-auto mb-12">
+                <p>
+                    The journey of life becomes truly meaningful when we turn inward and discover the peace within ourselves.
+                </p>
+                <p>
+                    <em class="text-theme-pink italic"></em>Sunder Lakshya </em>is dedicated to sharing the wisdom, values, and teachings of Jain dharma through spiritual guidance, pravachans, darshan, and community updates.
+                </p>
+            </div>
+
+            <!-- Footer Text -->
+            <p class="text-theme-dark-brown text-base md:text-lg font-medium mt-16 mb-12">
+                <em class="text-theme-pink italic">Our उद्देश्य </em> is simple — to inspire every seeker to embrace Ahimsa, संयम, आत्मचिंतन, and करुणा, and to move forward on the path of inner transformation.
+            </p>
+
+            <!-- MATCHING BADGE BUTTON -->
+            <div class="mb-16">
+                <a href="#" class="date-badge">
+                    <span class="dl">Know More About Gurumaa</span>
+                </a>
+            </div>
+
+            <!-- Video Thumbnail Trigger Button -->
+            <div id="open-video-modal" class="relative w-full max-w-[800px] mx-auto rounded-xl overflow-hidden shadow-2xl border border-sand/60 bg-black cursor-pointer group" style="aspect-ratio: 16/9;">
+                <img src="https://img.youtube.com/vi/2Zi8lbomEE8/maxresdefault.jpg" alt="The real struggle to be a Jain monk" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100">
+                <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/35 group-hover:bg-black/20 transition-colors duration-300">
+                    <div class="w-[72px] h-[72px] bg-[#FF0000] rounded-full flex items-center justify-center text-white text-2xl shadow-2xl transition-transform duration-300 group-hover:scale-110 pl-1">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- End Video Section -->
+            
+        </div>
+    </section>
+    <!-- End About The Mahotsav Section -->
+
+    <!-- Lightbox Popup Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="modal-content-wrapper">
+            <button id="close-video-modal" class="modal-close-btn" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="youtube-player-container" class="w-full h-full"></div>
+        </div>
+    </div>
+
+    <!-- Dynamic 3D Cylinder Carousel Section -->
+    <section id="gallery" class="w-full relative">
+        <div class="carousel-scene">
+            <div class="ambient-glow"></div>
+            <div class="carousel-positioner">
+                <div class="carousel-cylinder" id="cylinder"></div>
+            </div>
+            <div class="vignette-overlay"></div>
+            <div class="vignette-top-bottom"></div>
+        </div>
+    </section>
+
+    <!-- Gradient Closing Section -->
+    <!-- =========================================
+         GRADIENT MESSAGE SECTION
+         ========================================= -->
+    <section class="footer-gradient">
+
+        <div class="footer-logo">
+            <img src="images/logo.png"
+                 alt="Sunder Lakshya"
+                 style="filter: brightness(0) invert(1); width: 280px; height: auto; object-fit: contain;">
+        </div>
+
+        <p class="footer-description">
+            Stay connected to the path of peace. Receive daily darshan, vihar updates, and spiritual guidance directly
+            from the community.
+        </p>
+
+        <div class="footer-message">
+            <h2 class="message-white">Walk the path of inner peace.</h2>
+            <h2 class="message-gold">Ahimsa Paramo Dharma.</h2>
+        </div>
+
+    </section>
+
+    <!-- =========================================
+         BLACK COPYRIGHT + SOCIAL SECTION
+         ========================================= -->
+    <section class="footer-social-section">
+
+        <hr class="footer-divider">
+
+         <p class="footer-copyright">
+            &copy; <span id="year">2026</span> Sunder_Lakshya. All rights reserved.<br>
+            <a href="https://www.instagram.com/team_sunder_lakshya?igsh=MTEyc3MyM2l1bGM0YQ==" target="_blank">
+                Managed By TEAM_SUNDER_LAKSHYA
+            </a>
+        </p>
+
+        <div class="social-links-container" id="dynamic-socials">
+        </div>
+
+    </section>
+
+    <!-- =========================================
+         BLACK WATERMARK SECTION
+         ========================================= -->
+    <footer class="sunder_sulakshya-footer">
+
+        <div class="footer-watermark">
+            <span class="watermark-line">Sunder</span><br>
+            <span class="watermark-line">Lakshya</span>
+        </div>
+
+    </footer>
+
+    <!-- Dynamic JS Logic -->
+    <script>
+        const siteData = {
+            heroImages: [
+                "images/hero1.jpeg", 
+                "images/hero2.jpeg", 
+                "images/hero3.jpeg"  
+            ],
+            galleryImages: [
+                "images/1.1.JPG", "images/1.2.JPG", "images/1.3.JPG",
+                "images/1.4.JPG", "images/1.5.JPG", "images/1.6.JPG",
+                "images/1.7.JPG", "images/1.8.JPG", "images/1.9.JPG",
+                "images/1.10.JPG", "images/1.11.JPG", "images/1.12.JPG",
+                "images/1.13.JPG", "images/1.14.JPG", "images/1.15.JPG"
+            ],
+            navigation: [
+                { id: "home", label: "Home", url: "index.html", isActive: true },
+                { id: "jeevan-parichay", label: "Jeevan Parichay", url: "Jeevan_parichay/index.html", isActive: false },
+                { id: "classes-pravachan", label: "Classes & Pravachan", url: "Classes_&_Pravachan/index.html", isActive: false },
+                { id: "social-media", label: "Social Media", url: "Social_Media/index.html", isActive: false }
+            ],
+            socialLinks: [
+                { icon: "fa-whatsapp", url: "#", class: "whatsapp" },
+                { icon: "fa-instagram", url: "https://www.instagram.com/team_sunder_lakshya?igsh=MTEyc3MyM2l1bGM0YQ==", class: "instagram" },
+                { icon: "fa-youtube", url: "#", class: "youtube" },
+                { icon: "fa-facebook-f", url: "#", class: "facebook" }
+            ]
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Lightbox Video Modal Logic using YouTube IFrame API Embed ---
+            const openModalBtn = document.getElementById('open-video-modal');
+            const closeModalBtn = document.getElementById('close-video-modal');
+            const videoModal = document.getElementById('videoModal');
+            const playerContainer = document.getElementById('youtube-player-container');
+            const videoID = "2Zi8lbomEE8";
+
+            openModalBtn.addEventListener('click', () => {
+                videoModal.classList.add('active');
+                playerContainer.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoID}?autoplay=1&enablejsapi=1&rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+            });
+
+            const closeModal = () => {
+                videoModal.classList.remove('active');
+                playerContainer.innerHTML = "";
+            };
+
+            closeModalBtn.addEventListener('click', closeModal);
+            videoModal.addEventListener('click', (e) => {
+                if (e.target === videoModal) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            // --- Inject Top Hero Slider ---
+            const heroSlidesContainer = document.getElementById('hero-slides-container');
+            const heroDotsContainer = document.getElementById('hero-dots-container');
+            
+            if (heroSlidesContainer && heroDotsContainer && siteData.heroImages) {
+                siteData.heroImages.forEach((src, index) => {
+                    const slide = document.createElement('div');
+                    slide.className = `hero-slide ${index === 0 ? 'active' : ''}`;
+                    slide.innerHTML = `<img src="${src}" alt="Hero Poster ${index + 1}">`;
+                    heroSlidesContainer.appendChild(slide);
+
+                    const dot = document.createElement('div');
+                    dot.className = `hero-dot ${index === 0 ? 'active' : ''}`;
+                    dot.dataset.index = index;
+                    dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+                    heroDotsContainer.appendChild(dot);
+                });
+
+                let currentSlide = 0;
+                const slides = document.querySelectorAll('.hero-slide');
+                const dots = document.querySelectorAll('.hero-dot');
+                const totalHeroSlides = slides.length;
+                let autoPlayInterval;
+
+                const goToSlide = (index) => {
+                    slides[currentSlide].classList.remove('active');
+                    dots[currentSlide].classList.remove('active');
+                    
+                    currentSlide = (index + totalHeroSlides) % totalHeroSlides;
+                    
+                    slides[currentSlide].classList.add('active');
+                    dots[currentSlide].classList.add('active');
+                };
+
+                const resetAutoPlay = () => {
+                    clearInterval(autoPlayInterval);
+                    autoPlayInterval = setInterval(() => goToSlide(currentSlide + 1), 6000);
+                };
+
+                document.getElementById('prev-slide').addEventListener('click', () => {
+                    goToSlide(currentSlide - 1);
+                    resetAutoPlay();
+                });
+                document.getElementById('next-slide').addEventListener('click', () => {
+                    goToSlide(currentSlide + 1);
+                    resetAutoPlay();
+                });
+
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        goToSlide(index);
+                        resetAutoPlay();
+                    });
+                });
+
+                resetAutoPlay();
+            }
+
+            // --- Inject Dynamic Nav Links ---
+            const navContainer = document.getElementById('dynamic-nav');
+            siteData.navigation.forEach(nav => {
+                const a = document.createElement('a');
+                a.href = nav.url; 
+                a.className = `nav-link ${nav.isActive ? 'active' : ''}`;
+                a.dataset.page = nav.id;
+                a.innerHTML = `<b>${nav.label}</b>`;
+                navContainer.appendChild(a);
+            });
+
+            // --- Inject Dynamic Social Links ---
+            const socialContainer = document.getElementById('dynamic-socials');
+            siteData.socialLinks.forEach(social => {
+                const a = document.createElement('a');
+                a.href = social.url;
+                a.target = social.url !== '#' ? '_blank' : '_self';
+                a.className = `neu-social-btn ${social.class}`;
+                a.innerHTML = `<i class="fa-brands ${social.icon}"></i>`;
+                socialContainer.appendChild(a);
+            });
+
+            // --- Inject Dynamic 3D Carousel Images ---
+            const cylinder = document.getElementById('cylinder');
+            if (cylinder) {
+                const totalImages = siteData.galleryImages.length;
+                const angleIncrement = 360 / totalImages;
+
+                siteData.galleryImages.forEach((src, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'carousel-item';
+
+                    const rotateY = angleIncrement * index;
+                    item.style.transform = `rotateY(${rotateY}deg) translateZ(-580px)`;
+
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = "Sunder Sulakshya Photo";
+                    img.draggable = false;
+
+                    item.appendChild(img);
+                    cylinder.appendChild(item);
+                });
+
+                let isDragging = false;
+                let startX = 0;
+                let currentRotation = 0;
+
+                const handleStart = (e) => {
+                    isDragging = true;
+                    startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+                    cylinder.style.animation = 'none';
+                };
+
+                const handleMove = (e) => {
+                    if (!isDragging) return;
+                    const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+                    const deltaX = x - startX;
+                    const newRotation = currentRotation - (deltaX * 0.15);
+                    cylinder.style.transform = `rotateY(${newRotation}deg)`;
+                };
+
+                const handleEnd = (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    const x = e.type.includes('mouse') ? e.pageX : e.changedTouches[0].pageX;
+                    currentRotation -= (x - startX) * 0.15;
+
+                    const styleSheet = document.createElement("style");
+                    styleSheet.type = "text/css";
+                    styleSheet.innerText = `
+                        @keyframes spinCylinderManual {
+                            from { transform: rotateY(${currentRotation}deg); }
+                            to { transform: rotateY(${currentRotation - 360}deg); }
+                        }
+                    `;
+                    document.head.appendChild(styleSheet);
+                    cylinder.style.animation = 'spinCylinderManual 45s linear infinite';
+                };
+
+                cylinder.addEventListener('touchstart', handleStart, { passive: true });
+                window.addEventListener('touchmove', handleMove, { passive: true });
+                window.addEventListener('touchend', handleEnd);
+
+                cylinder.addEventListener('mousedown', handleStart);
+                window.addEventListener('mousemove', handleMove);
+                window.addEventListener('mouseup', handleEnd);
+            }
+
+            // --- Navbar & Drawer Logic ---
+            const navbar = document.querySelector('.site-navbar');
+            const links = document.querySelectorAll('.nav-link');
+            const hamburgerBtn = document.querySelector('.hamburger-btn');
+            const closeBtn = document.querySelector('.close-btn');
+            const navLinksContainer = document.querySelector('.navbar-links');
+            const navOverlay = document.querySelector('.nav-overlay');
+            
+            window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('visible');
+        } else {
+            navbar.classList.remove('visible');
+        }
+    });
+
+            const updateNavbar = () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('visible');
+                } else {
+                    navbar.classList.remove('visible');
+                }
+            };
+            updateNavbar();
+            window.addEventListener('scroll', updateNavbar, { passive: true });
+
+            const toggleDrawer = () => {
+                navLinksContainer.classList.toggle('active');
+                navOverlay.classList.toggle('active');
+            };
+
+            hamburgerBtn.addEventListener('click', toggleDrawer);
+            closeBtn.addEventListener('click', toggleDrawer);
+            navOverlay.addEventListener('click', toggleDrawer);
+
+            
+            const currentPath = window.location.pathname;
+            links.forEach(link => {
+                const linkPath = new URL(link.href).pathname;
+                if (currentPath.includes(linkPath) && linkPath !== "/") {
+                    links.forEach(l => l.classList.remove('active'));
+                    link.link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
